@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primera Comunión - Jose Gerardo</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            background: linear-gradient(180deg, #faf8f3 0%, #f5ead8 50%, #f0ddb8 100%);
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #f5e6d3 0%, #e8d4b8 100%);
+            color: #6b5410;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 3px solid #d4af37;
+        }
+
+        .header::before {
+            content: '✝';
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.08;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #d4af37;
+        }
+
+        .header h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(212, 175, 55, 0.2);
+            position: relative;
+            z-index: 1;
+            color: #8b6914;
+            font-weight: 400;
+        }
+
+        .header .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            font-style: italic;
+            opacity: 0.85;
+            position: relative;
+            z-index: 1;
+            color: #6b5410;
+        }
+
+        .cross-icon {
+            font-size: 3em;
+            margin: 20px 0;
+            color: #d4af37;
+            filter: drop-shadow(2px 2px 4px rgba(212, 175, 55, 0.3));
+        }
+
+        /* Main Content */
+        .content {
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .invitation-text {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 30px;
+            background: linear-gradient(135deg, #fdfbf7 0%, #f5ead8 100%);
+            border-radius: 15px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.15);
+        }
+
+        .invitation-text p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3em;
+            line-height: 1.8;
+            color: #6b5410;
+            font-weight: 400;
+        }
+
+        .child-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5em;
+            color: #8b6914;
+            font-weight: 400;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(212, 175, 55, 0.3);
+            letter-spacing: 1px;
+        }
+
+        /* Event Sections */
+        .event-section {
+            margin: 50px 0;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.15);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .ceremony {
+            background: linear-gradient(135deg, #fdfbf7 0%, #f8f3e8 100%);
+        }
+
+        .reception {
+            background: linear-gradient(135deg, #fdfbf7 0%, #f5ead8 100%);
+        }
+
+        .event-section h2 {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            color: #8b6914;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .event-section .icon {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .ceremony .icon {
+            color: #b8932f;
+        }
+
+        .reception .icon {
+            color: #d4af37;
+        }
+
+        .event-details {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .event-details p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2em;
+            margin: 10px 0;
+            color: #6b5410;
+        }
+
+        .event-details .date-time {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #8b6914;
+            margin: 15px 0;
+        }
+
+        /* Map Container */
+        .map-container {
+            margin: 30px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+        }
+
+        .map-link {
+            font-family: 'Playfair Display', serif;
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #d4af37 0%, #b8932f 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+            border: none;
+        }
+
+        .map-link:hover {
+            background: linear-gradient(135deg, #b8932f 0%, #8b6914 100%);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #e8d4b8 0%, #d4af37 100%);
+            color: #6b5410;
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 3px solid #b8932f;
+        }
+
+        .footer p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1em;
+            margin: 10px 0;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .footer .heart {
+            color: #d4af37;
+            font-size: 1.2em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .header .subtitle {
+                font-size: 1.2em;
+            }
+
+            .child-name {
+                font-size: 1.8em;
+            }
+
+            .event-section {
+                padding: 20px;
+            }
+
+            .map-container iframe {
+                height: 250px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Botón Dorado */
+        .btn-golden {
+            font-family: 'Playfair Display', serif;
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #d4af37 0%, #b8932f 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.1em;
+            font-weight: 600;
+            border: none;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-golden:hover {
+            background: linear-gradient(135deg, #b8932f 0%, #8b6914 100%);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+            color: white;
+        }
+
+        .btn-golden i {
+            margin-right: 8px;
+        }
+
+        /* Modal Styles */
+        .modal-content {
+            border-radius: 20px;
+            border: 2px solid #d4af37;
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #f5e6d3 0%, #e8d4b8 100%);
+            border-bottom: 2px solid #d4af37;
+            border-radius: 18px 18px 0 0;
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            color: #8b6914;
+            font-weight: 700;
+        }
+
+        .modal-body {
+            padding: 30px;
+            background: linear-gradient(135deg, #fdfbf7 0%, #f5ead8 100%);
+        }
+
+        .calendar-option {
+            display: block;
+            width: 100%;
+            padding: 15px 20px;
+            margin: 10px 0;
+            background: white;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            color: #6b5410;
+            text-decoration: none;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .calendar-option:hover {
+            background: linear-gradient(135deg, #d4af37 0%, #b8932f 100%);
+            color: white;
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .calendar-option i {
+            margin-right: 10px;
+            font-size: 1.3em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header fade-in" data-aos="fade-down" data-aos-duration="1000">
+            <div class="cross-icon">✝</div>
+            <h1>Primera Comunión</h1>
+            <p class="subtitle">Un momento especial con Dios</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <!-- Invitation Text -->
+            <div class="invitation-text fade-in" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                <p>Con la bendición de Dios y la alegría de nuestro corazón</p>
+                <p>te invitamos a acompañarnos en la</p>
+                <p><strong>Primera Comunión</strong> de</p>
+                <div class="child-name">Jose Gerardo</div>
+            </div>
+
+            <!-- Ceremony Section -->
+            <div class="event-section ceremony fade-in" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300">
+                <div class="icon">
+                    <i class="fas fa-church"></i>
+                </div>
+                <h2>Ceremonia Religiosa</h2>
+                <div class="event-details">
+                    <p class="date-time">
+                        <i class="far fa-calendar-alt"></i> Sábado, 15 de Agosto 2026<br>
+                        <i class="far fa-clock"></i> 12:00 PM
+                    </p>
+                    <p><i class="fas fa-map-marker-alt"></i> <strong>Iglesia de Acajete, Puebla</strong></p>
+                    <p>Parroquia de Nuestra Señora de la Asunción</p>
+                </div>
+                
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.8667!2d-98.04547!3d19.02444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfc7a3e9d3e9e9%3A0x1234567890abcdef!2sAcajete%2C%20Puebla!5e0!3m2!1ses!2smx!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                
+                <div style="text-align: center;">
+                    <a href="https://www.google.com/maps/search/iglesia+acajete+puebla" target="_blank" class="map-link">
+                        <i class="fas fa-map-marked-alt"></i> Ver en Google Maps
+                    </a>
+                </div>
+            </div>
+
+            <!-- Reception Section -->
+            <div class="event-section reception fade-in" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400">
+                <div class="icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h2>Recepción</h2>
+                <div class="event-details">
+                    <p class="date-time">
+                        <i class="far fa-clock"></i> 2:00 PM
+                    </p>
+                    <p><i class="fas fa-home"></i> <strong>Celebración en Casa</strong></p>
+                    <p>Centro de Acajete, Puebla</p>
+                    <p style="margin-top: 20px; font-style: italic;">
+                        Después de la ceremonia, te esperamos para compartir juntos<br>
+                        este momento especial con alimentos y convivencia
+                    </p>
+                </div>
+                
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.85!2d-98.04247!3d19.02744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfc7a3e9d3e9e9%3A0xabcdef1234567890!2sCentro%2C%20Acajete%2C%20Puebla!5e0!3m2!1ses!2smx!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                
+                <div style="text-align: center;">
+                    <a href="https://www.google.com/maps/search/centro+acajete+puebla" target="_blank" class="map-link">
+                        <i class="fas fa-map-marked-alt"></i> Ver en Google Maps
+                    </a>
+                </div>
+            </div>
+
+            <!-- Confirmation Note -->
+            <div style="text-align: center; margin: 50px 0; padding: 35px; background: linear-gradient(135deg, #fdfbf7 0%, #f5ead8 100%); border-radius: 15px; border: 2px solid rgba(212, 175, 55, 0.3); box-shadow: 0 5px 20px rgba(212, 175, 55, 0.15);" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="500">
+                <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.3em; color: #6b5410; line-height: 1.8;">
+                    <i class="fas fa-envelope" style="color: #d4af37; font-size: 1.5em;"></i><br><br>
+                    Tu presencia es el mejor regalo<br>
+                    <strong>¡Te esperamos!</strong>
+                </p>
+            </div>
+
+            <!-- boton de agregar al calendario fecha agosto 15 del 2026 -->
+            <div style="text-align: center; margin: 30px 0;" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="550">
+                <button class="btn-golden" data-bs-toggle="modal" data-bs-target="#calendarModal">
+                    <i class="far fa-calendar-plus"></i> Agregar al Calendario
+                </button>
+            </div>
+
+            <!-- Frase Católica -->
+            <div style="text-align: center; margin: 40px 0 30px 0; padding: 40px 30px; background: linear-gradient(135deg, #f5e6d3 0%, #e8d4b8 100%); border-radius: 15px; box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25); border: 2px solid #d4af37;" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                <div style="font-size: 2.5em; color: #8b6914; margin-bottom: 15px;">✝</div>
+                <p style="font-family: 'Playfair Display', serif; font-size: 1.5em; color: #6b5410; font-style: italic; line-height: 1.8; font-weight: 500; text-shadow: 1px 1px 2px rgba(255,255,255,0.5);">
+                    Jesús viene a mi corazón y se queda para siempre.
+                </p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Con cariño,</p>
+            <p><strong>La Familia Morales</strong></p>
+            <p style="margin-top: 20px;">
+                Hecho con <span class="heart">♥</span> para Jose Gerardo
+            </p>
+        </div>
+    </div>
+
+    <!-- Modal Calendario -->
+    <div class="modal fade" id="calendarModal" tabindex="-1" aria-labelledby="calendarModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="calendarModalLabel">
+                        <i class="fas fa-calendar-alt" style="color: #d4af37; margin-right: 10px;"></i>
+                        Agregar al Calendario
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p style="text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 1.1em; color: #6b5410; margin-bottom: 25px;">
+                        Elige tu aplicación de calendario favorita:
+                    </p>
+                    <a href="#" class="calendar-option" id="googleCalendar">
+                        <i class="fab fa-google"></i> Google Calendar
+                    </a>
+                    <a href="#" class="calendar-option" id="outlookCalendar">
+                        <i class="fab fa-microsoft"></i> Outlook Calendar
+                    </a>
+                    <a href="#" class="calendar-option" id="appleCalendar">
+                        <i class="fab fa-apple"></i> Apple Calendar (.ics)
+                    </a>
+                    <a href="#" class="calendar-option" id="downloadICS">
+                        <i class="fas fa-download"></i> Descargar archivo .ics
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inicializar AOS (Animate On Scroll)
+        AOS.init({
+            once: true,
+            mirror: false
+        });
+    </script>
+    <script src="code.js"></script>
+</body>
+</html>
