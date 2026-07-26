@@ -2,6 +2,21 @@
 
 // Animaciones al hacer scroll
 document.addEventListener('DOMContentLoaded', function() {
+    // Reproducir música de fondo en bucle con volumen al 30%
+    const backgroundMusic = document.getElementById('bg-music');
+    if (backgroundMusic) {
+        backgroundMusic.volume = 0.2;
+        backgroundMusic.loop = true;
+
+        const tryPlayMusic = () => {
+            backgroundMusic.play().catch(() => {});
+        };
+
+        tryPlayMusic();
+        document.addEventListener('click', tryPlayMusic, { once: true });
+        document.addEventListener('touchstart', tryPlayMusic, { once: true });
+    }
+
     // Información del evento
     const eventInfo = {
         title: 'Primera Comunión de Jose Gerardo',
