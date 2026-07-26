@@ -329,6 +329,100 @@
             box-shadow: 0 10px 30px rgba(212, 175, 55, 0.45);
         }
 
+        /* Pantalla de bienvenida */
+        .welcome-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 20000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            text-align: center;
+            background: linear-gradient(160deg, #f5e6d3 0%, #e8d4b8 55%, #d4af37 130%);
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .welcome-overlay::before {
+            content: '✝';
+            position: absolute;
+            font-size: 260px;
+            opacity: 0.08;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #8b6914;
+            pointer-events: none;
+        }
+
+        .welcome-overlay--hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .welcome-content {
+            position: relative;
+            max-width: 420px;
+        }
+
+        .welcome-cross {
+            font-size: 3em;
+            color: #8b6914;
+            margin-bottom: 10px;
+            animation: pulse 2.5s ease-in-out infinite;
+        }
+
+        .welcome-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #6b5410;
+            margin-bottom: 6px;
+        }
+
+        .welcome-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3em;
+            color: #6b5410;
+            text-shadow: 2px 2px 4px rgba(212, 175, 55, 0.3);
+            margin-bottom: 30px;
+        }
+
+        .welcome-button {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 1.05em;
+            letter-spacing: 0.5px;
+            color: white;
+            background: linear-gradient(135deg, #d4af37 0%, #8b6914 100%);
+            border: none;
+            border-radius: 999px;
+            padding: 16px 36px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5);
+            animation: welcomeButtonPulse 2s ease-in-out infinite;
+        }
+
+        .welcome-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.6);
+        }
+
+        .welcome-hint {
+            margin-top: 18px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1em;
+            color: #8b6914;
+            opacity: 0.85;
+        }
+
+        @keyframes welcomeButtonPulse {
+            0%, 100% { box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5); }
+            50% { box-shadow: 0 10px 40px rgba(212, 175, 55, 0.8); }
+        }
+
         /* Modal Styles */
         .modal-content {
             border-radius: 20px;
@@ -385,6 +479,20 @@
 </head>
 <body>
     <audio id="bg-music" src="assets/Music.mp3" preload="auto" loop></audio>
+
+    <!-- Pantalla de bienvenida -->
+    <div id="welcome-overlay" class="welcome-overlay">
+        <div class="welcome-content">
+            <div class="welcome-cross">✝</div>
+            <div class="welcome-title">Primera Comunión</div>
+            <div class="welcome-name">Jose Gerardo</div>
+            <button id="welcome-button" class="welcome-button" type="button">
+                💌 Abrir invitación
+            </button>
+            <p class="welcome-hint">Toca para ver tu invitación</p>
+        </div>
+    </div>
+
     <button id="music-toggle" class="music-toggle" type="button" aria-label="Reproducir música">🎵 Reproducir música</button>
 
     <div class="container">

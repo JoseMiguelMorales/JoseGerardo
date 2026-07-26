@@ -36,24 +36,40 @@ document.addEventListener('DOMContentLoaded', function() {
 
         backgroundMusic.addEventListener('play', () => setButtonLabel(true));
         backgroundMusic.addEventListener('pause', () => setButtonLabel(false));
+    }
 
-        const tryPlayMusic = async () => {
-            try {
-                if (backgroundMusic.paused) {
+    // Pantalla de bienvenida: al tocar, se abre la invitación y arranca la música
+    const welcomeOverlay = document.getElementById('welcome-overlay');
+    const welcomeButton = document.getElementById('welcome-button');
+
+    if (welcomeOverlay && welcomeButton) {
+        document.body.style.overflow = 'hidden';
+
+        const openInvitation = async () => {
+            if (backgroundMusic) {
+                try {
                     await backgroundMusic.play();
-                    setButtonLabel(true);
+                } catch (error) {
+                    // Si el navegador aún así lo bloquea, no pasa nada:
+                    // el botón de música flotante permite reproducirlo manualmente
                 }
-            } catch (error) {
-                setButtonLabel(false);
             }
+
+            welcomeOverlay.classList.add('welcome-overlay--hidden');
+            document.body.style.overflow = '';
+
+            setTimeout(() => {
+                welcomeOverlay.remove();
+            }, 800);
+
+            setTimeout(createGoldenConfetti, 200);
         };
 
-        setTimeout(() => {
-            tryPlayMusic();
-        }, 3000);
-
-        document.addEventListener('click', tryPlayMusic, { once: true });
-        document.addEventListener('touchstart', tryPlayMusic, { once: true });
+        welcomeButton.addEventListener('click', openInvitation);
+    } else {
+        // Si por alguna razón no existe la pantalla de bienvenida, se mantiene
+        // el comportamiento anterior como respaldo.
+        setTimeout(createGoldenConfetti, 500);
     }
 
     // Información del evento
@@ -258,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 
-    // Efecto de confetti dorado al cargar la página
+    // Efecto de confetti dorado (se activa al tocar "Abrir invitación")
     function createGoldenConfetti() {
         const colors = ['#d4af37', '#b8932f', '#ffd700', '#f5e6d3', '#e8d4b8'];
         const confettiCount = 60;
@@ -292,9 +308,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }, i * 25);
         }
     }
-
-    // Activar confetti dorado al cargar (puedes comentar esta línea si no lo quieres)
-    setTimeout(createGoldenConfetti, 500);
 
     // Animación de entrada del nombre del niño
     const childName = document.querySelector('.child-name');
