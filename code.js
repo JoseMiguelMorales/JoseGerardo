@@ -2,17 +2,56 @@
 
 // Animaciones al hacer scroll
 document.addEventListener('DOMContentLoaded', function() {
-    // Reproducir música de fondo en bucle con volumen al 30%
+    // Reproducir música de fondo en bucle con volumen al 20%
     const backgroundMusic = document.getElementById('bg-music');
+    const musicToggle = document.getElementById('music-toggle');
+
     if (backgroundMusic) {
         backgroundMusic.volume = 0.2;
         backgroundMusic.loop = true;
 
-        const tryPlayMusic = () => {
-            backgroundMusic.play().catch(() => {});
+        const setButtonLabel = (isPlaying) => {
+            if (musicToggle) {
+                musicToggle.textContent = isPlaying ? '⏸️ Pausar música' : '🎵 Reproducir música';
+            }
         };
 
-        tryPlayMusic();
+        const toggleMusic = async () => {
+            try {
+                if (backgroundMusic.paused) {
+                    await backgroundMusic.play();
+                    setButtonLabel(true);
+                } else {
+                    backgroundMusic.pause();
+                    setButtonLabel(false);
+                }
+            } catch (error) {
+                setButtonLabel(false);
+            }
+        };
+
+        if (musicToggle) {
+            musicToggle.addEventListener('click', toggleMusic);
+        }
+
+        backgroundMusic.addEventListener('play', () => setButtonLabel(true));
+        backgroundMusic.addEventListener('pause', () => setButtonLabel(false));
+
+        const tryPlayMusic = async () => {
+            try {
+                if (backgroundMusic.paused) {
+                    await backgroundMusic.play();
+                    setButtonLabel(true);
+                }
+            } catch (error) {
+                setButtonLabel(false);
+            }
+        };
+
+        setTimeout(() => {
+            tryPlayMusic();
+        }, 3000);
+
         document.addEventListener('click', tryPlayMusic, { once: true });
         document.addEventListener('touchstart', tryPlayMusic, { once: true });
     }
